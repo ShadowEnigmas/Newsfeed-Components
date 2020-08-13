@@ -89,6 +89,58 @@ const data = [
   }
 ];
 
+
+
+function articleMaker(title, date, firstParagraph, secondParagraph, thirdParagraph) {
+  const article = document.createElement('div');
+  article.classList.add('article');
+  const articleTitle = document.createElement('h2');
+  const articleDate = document.createElement('p');
+  articleDate.classList.add('date');
+  const articleFirstParagraph = document.createElement('p');
+  const articleSecondParagraph = document.createElement('p');
+  const articleThirdParagraph = document.createElement('p');
+  const expandButton = document.createElement('span');
+  expandButton.classList.add("expandButton");
+  expandButton.textContent = '+'
+  expandButton.addEventListener('click', () => {
+    article.classList.toggle("article-open");
+  });
+
+  article.appendChild(articleTitle);
+  article.appendChild(articleDate);
+  article.appendChild(articleFirstParagraph);
+  article.appendChild(articleSecondParagraph);
+  article.appendChild(articleThirdParagraph);
+  article.appendChild(expandButton);
+
+
+  articleTitle.textContent = title;
+  articleDate.textContent = date;
+  articleFirstParagraph.textContent = firstParagraph;
+  articleSecondParagraph.textContent = secondParagraph;
+  articleThirdParagraph.textContent = thirdParagraph;
+
+
+  return article;
+}
+
+const articleList = document.querySelector('.articles');
+
+data.push(
+  {
+  title: 'test',
+  date: 'test',
+  firstParagraph: `test `,
+  secondParagraph: `test`,
+  thirdParagraph: `test`
+});
+
+data.map((data) => {
+  articleList.appendChild(articleMaker(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph));
+});
+
+
 /*
   Step 1: Write a component called 'articleMaker' to create an article.
   Your component is a function that takes an article object as its only argument,
